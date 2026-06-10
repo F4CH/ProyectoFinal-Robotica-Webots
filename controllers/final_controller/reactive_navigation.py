@@ -39,11 +39,34 @@ class NavegacionReactiva:
         self.escape_direccion = None
         self.salida_pasos = 0
 
-    def decidir_movimiento(self, valores_ps, valor_decision):
+    def _lecturas_principales(self, valores_ps):
         frontal_izq = valores_ps[IDX_FRONTAL_IZQ]
         frontal_der = valores_ps[IDX_FRONTAL_DER]
         lateral_izq = valores_ps[IDX_LATERAL_IZQ]
         lateral_der = valores_ps[IDX_LATERAL_DER]
+        return frontal_izq, frontal_der, lateral_izq, lateral_der
+
+    def requiere_intervencion(self, valores_ps, valor_decision):
+        """Indica si la capa reactiva debe tomar prioridad sobre la ruta."""
+        if self.escape_pasos > 0 or self.salida_pasos > 0:
+            return True
+
+        frontal_izq, frontal_der, lateral_izq, lateral_der = self._lecturas_principales(
+            valores_ps,
+        )
+
+        return (
+            valor_decision > UMBRAL_FRONTAL
+            or frontal_izq > UMBRAL_FRONTAL
+            or frontal_der > UMBRAL_FRONTAL
+            or lateral_izq > UMBRAL_LATERAL_EXTREMO
+            or lateral_der > UMBRAL_LATERAL_EXTREMO
+        )
+
+    def decidir_movimiento(self, valores_ps, valor_decision):
+        frontal_izq, frontal_der, lateral_izq, lateral_der = self._lecturas_principales(
+            valores_ps,
+        )
 
         if self.escape_pasos > 0:
             self.escape_pasos -= 1

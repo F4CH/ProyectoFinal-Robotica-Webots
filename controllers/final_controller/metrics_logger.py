@@ -27,7 +27,10 @@ class MetricsLogger:
 
         fecha_hora = datetime.now().strftime("%d%m%Y-%H%M%S")
         nombre_archivo = f"log_{fecha_hora}_Mundo={escenario}_Modo={modo}.csv"
-        ruta = os.path.join(os.path.dirname(os.path.abspath(__file__)), nombre_archivo)
+        raiz_repo = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+        carpeta_resultados = os.path.join(raiz_repo, "results")
+        os.makedirs(carpeta_resultados, exist_ok=True)
+        ruta = os.path.join(carpeta_resultados, nombre_archivo)
 
         with open(ruta, "w", newline="") as archivo:
             escritor = csv.DictWriter(archivo, fieldnames=list(self.registros[0].keys()))

@@ -10,12 +10,20 @@ from config import DISTANCIA_RUEDAS, RADIO_RUEDA, TS
 class OdometriaDiferencial:
     """Mantiene la pose odometrica y calcula velocidades desde encoders."""
 
-    def __init__(self):
+    def __init__(self, x=0.0, y=0.0, theta=0.0):
         self.encoder_izq_anterior = None
         self.encoder_der_anterior = None
-        self.x = 0.0
-        self.y = 0.0
-        self.theta = 0.0
+        self.x = x
+        self.y = y
+        self.theta = self._normalizar(theta)
+
+    def _normalizar(self, angulo):
+        return (angulo + math.pi) % (2.0 * math.pi) - math.pi
+
+    def establecer_pose(self, x, y, theta):
+        self.x = x
+        self.y = y
+        self.theta = self._normalizar(theta)
 
     def actualizar(self, enc_izq, enc_der):
         if self.encoder_izq_anterior is None:
@@ -32,7 +40,7 @@ class OdometriaDiferencial:
         ds = (d_izq + d_der) / 2.0
         dtheta = (d_der - d_izq) / DISTANCIA_RUEDAS
 
-        self.theta = (self.theta + dtheta + math.pi) % (2.0 * math.pi) - math.pi
+        self.theta = self._normalizar(self.theta + dtheta)
         self.x += ds * math.cos(self.theta)
         self.y += ds * math.sin(self.theta)
 

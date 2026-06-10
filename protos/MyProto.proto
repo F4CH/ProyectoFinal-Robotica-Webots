@@ -8,6 +8,7 @@ PROTO MyProto [
   field SFRotation rotation 0 0 1 0 # Is `Pose.rotation`.
   field SFString name "e-puck" # Is `Solid.name`.
   field SFString controller "<generic>"
+  field SFBool supervisor TRUE
 
 ]
 {
@@ -16,5 +17,6 @@ PROTO MyProto [
     rotation IS rotation
     name IS name
     controller IS controller
+    supervisor IS supervisor
   }
 }

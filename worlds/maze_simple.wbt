@@ -1,0 +1,441 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "../protos/MyProto.proto"
+
+WorldInfo {
+  info [
+    "Maze simple: laberinto recto alineado a grilla de 0.2 m"
+    "Inicio abajo-izquierda, meta arriba-derecha"
+  ]
+  title "Maze Simple"
+  basicTimeStep 64
+}
+Viewpoint {
+  orientation -0.5778289902532973 0.5756661842665338 0.5785517282964974 2.095841784171376
+  position 0.24269179700696586 -0.8300044524193864 7.837677152362753
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 2.8 2.8
+  floorAppearance PBRAppearance {
+    baseColor 0.86 0.9 0.88
+    roughness 1
+    metalness 0
+  }
+  wallHeight 0.18
+}
+DEF SIMPLE_GOAL Solid {
+  translation 1.1 1.1 0.006
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.85 0.2
+        roughness 0.4
+        emissiveColor 0 0.25 0.05
+      }
+      geometry Box {
+        size 0.16 0.16 0.012
+      }
+    }
+  ]
+  name "maze_simple_goal"
+}
+DEF SIMPLE_WALL_01 Solid {
+  translation 0 1.3 0.08
+  children [
+    Shape {
+      appearance DEF SIMPLE_WALL_APP PBRAppearance {
+        baseColor 0.42 0.46 0.52
+        roughness 0.85
+      }
+      geometry Box {
+        size 2.4 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_01"
+  boundingObject Box {
+    size 2.4 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_02 Solid {
+  translation -0.1 0.9 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 1.8 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_02"
+  boundingObject Box {
+    size 1.8 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_03 Solid {
+  translation 0.7 0.7 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 0.2 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_03"
+  boundingObject Box {
+    size 0.2 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_04 Solid {
+  translation -0.4 0.5 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 1.6 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_04"
+  boundingObject Box {
+    size 1.6 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_05 Solid {
+  translation 0.7 0.5 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 0.2 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_05"
+  boundingObject Box {
+    size 0.2 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_06 Solid {
+  translation 0.3 0.3 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 0.2 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_06"
+  boundingObject Box {
+    size 0.2 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_07 Solid {
+  translation 0.7 0.3 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 0.2 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_07"
+  boundingObject Box {
+    size 0.2 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_08 Solid {
+  translation -0.5 0.1 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 1 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_08"
+  boundingObject Box {
+    size 1 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_09 Solid {
+  translation 0.3 0.1 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 0.2 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_09"
+  boundingObject Box {
+    size 0.2 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_10 Solid {
+  translation 0.7 0.1 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 0.2 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_10"
+  boundingObject Box {
+    size 0.2 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_11 Solid {
+  translation -0.9 -0.1 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 0.2 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_11"
+  boundingObject Box {
+    size 0.2 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_12 Solid {
+  translation -0.1 -0.1 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 0.2 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_12"
+  boundingObject Box {
+    size 0.2 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_13 Solid {
+  translation 0.3 -0.1 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 0.2 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_13"
+  boundingObject Box {
+    size 0.2 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_14 Solid {
+  translation -0.9 -0.3 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 0.2 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_14"
+  boundingObject Box {
+    size 0.2 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_15 Solid {
+  translation -0.5 -0.3 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 0.2 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_15"
+  boundingObject Box {
+    size 0.2 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_16 Solid {
+  translation -0.1 -0.3 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 0.2 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_16"
+  boundingObject Box {
+    size 0.2 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_17 Solid {
+  translation 0.6 -0.3 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 0.8 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_17"
+  boundingObject Box {
+    size 0.8 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_18 Solid {
+  translation -0.9 -0.5 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 0.2 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_18"
+  boundingObject Box {
+    size 0.2 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_19 Solid {
+  translation -0.5 -0.5 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 0.2 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_19"
+  boundingObject Box {
+    size 0.2 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_20 Solid {
+  translation -0.1 -0.5 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 0.2 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_20"
+  boundingObject Box {
+    size 0.2 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_21 Solid {
+  translation -0.9 -0.7 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 0.2 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_21"
+  boundingObject Box {
+    size 0.2 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_22 Solid {
+  translation 0.1 -0.7 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 1.4 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_22"
+  boundingObject Box {
+    size 1.4 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_23 Solid {
+  translation 0.7 -0.9 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 0.2 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_23"
+  boundingObject Box {
+    size 0.2 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_24 Solid {
+  translation -0.2 -1.1 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 1.2 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_24"
+  boundingObject Box {
+    size 1.2 0.18 0.16
+  }
+}
+DEF SIMPLE_WALL_25 Solid {
+  translation 0 -1.3 0.08
+  children [
+    Shape {
+      appearance USE SIMPLE_WALL_APP
+      geometry Box {
+        size 2.4 0.18 0.16
+      }
+    }
+  ]
+  name "simple_wall_25"
+  boundingObject Box {
+    size 2.4 0.18 0.16
+  }
+}
+MyProto {
+  hidden position_0_0 215.84973509331243
+  hidden position_0_1 228.5318082644275
+  hidden linearVelocity_0 -3.566177564532151e-15 7.187820288071916e-16 3.315866100213801e-15
+  hidden angularVelocity_0 -5.351979498600801e-15 -2.2103825281703527e-14 -6.371623928441464e-16
+  hidden rotation_1 0 0.9999999999999999 0 2.221434649206492
+  hidden linearVelocity_1 -8.542235133412092e-15 -9.805830565342029e-17 -2.8410626685287586e-15
+  hidden angularVelocity_1 -2.3296481918143635e-14 -5.589862732915448e-13 -2.5225571928303766e-16
+  hidden rotation_2 0 1 0 2.3371372059623834
+  hidden linearVelocity_2 -1.1091476823130832e-14 7.072626213978496e-18 -9.148277748920344e-15
+  hidden angularVelocity_2 -4.0717413405475775e-14 -8.290105540984935e-13 5.588869627647169e-16
+  translation 1.0970965042515568 1.0201850074327663 -0.00011382366568233118
+  rotation -4.1416732149079885e-10 -3.9937801946693854e-10 1 1.5344345893569622
+  controller "final_controller"
+}
