@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Webots temporales
+*.wbproj
+*.wbproj.*
+*.wbt.bak
+*.wbo.bak
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Videos pesados
+*.mp4
+*.mov
+*.avi
+
+# Temporales
+*.tmp
