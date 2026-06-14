@@ -96,6 +96,7 @@ class ControladorEpuckFinal:
 
         self.escenario = None
         self.grid = None
+        self.celda_inicio = None
         self.ruta_celdas = []
         self.waypoints = []
         self.seguidor = None
@@ -156,6 +157,36 @@ class ControladorEpuckFinal:
             except Exception:
                 return None
 
+    def _celda_libre_cercana(self, x, y):
+        """Retorna la celda libre de la grilla más cercana a las coordenadas dadas.
+
+        Si la celda que corresponde a (x, y) es un obstáculo, hace una búsqueda
+        BFS de ancho hasta encontrar una celda libre adyacente.
+        """
+        celda = self.grid.mundo_a_celda(x, y)
+
+        if self.grid.es_libre(celda):
+            return celda
+
+        visitados = {celda}
+        cola = [celda]
+        cabeza = 0
+
+        while cabeza < len(cola) and len(cola) < 30:
+            fila, col = cola[cabeza]
+            cabeza += 1
+            for df, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                vecino = (fila + df, col + dc)
+                if vecino in visitados or not self.grid.dentro_de_limites(vecino):
+                    continue
+                visitados.add(vecino)
+                if self.grid.es_libre(vecino):
+                    return vecino
+                cola.append(vecino)
+
+        print("[ADVERTENCIA] No se encontro celda libre cercana. Usando inicio por defecto.")
+        return self.grid.inicio
+
     def _sincronizar_pose_supervisor(self):
         pose = self._leer_pose_supervisor()
 
@@ -193,9 +224,24 @@ class ControladorEpuckFinal:
                 tamano_celda=TAMANO_CELDA,
                 origen_webots=config_mapa["origen_webots"],
             )
+
+            # Leer pose real ANTES de planificar: el A* parte desde donde
+            # está el robot, no desde la celda marcada en el CSV.
+            pose = self._leer_pose_supervisor()
+            if pose is None:
+                inicio_x, inicio_y = self.grid.celda_a_mundo(self.grid.inicio)
+                pose = (inicio_x, inicio_y, config_mapa["theta_inicial"])
+                self.celda_inicio = self.grid.inicio
+            else:
+                self.usando_pose_supervisor = True
+                self.ultima_pose_supervisor = pose
+                self.celda_inicio = self._celda_libre_cercana(pose[0], pose[1])
+
+            self.odometria.establecer_pose(*pose)
+
             self.ruta_celdas = astar(
                 self.grid,
-                self.grid.inicio,
+                self.celda_inicio,
                 self.grid.meta,
                 tipo_movimiento=MOVIMIENTO_ASTAR,
             )
@@ -207,19 +253,11 @@ class ControladorEpuckFinal:
             self.waypoints = self.grid.path_to_waypoints(self.ruta_celdas)
             self.seguidor = WaypointFollower(self.waypoints)
 
-            pose = self._leer_pose_supervisor()
-            if pose is None:
-                inicio_x, inicio_y = self.grid.celda_a_mundo(self.grid.inicio)
-                pose = (inicio_x, inicio_y, config_mapa["theta_inicial"])
-            else:
-                self.usando_pose_supervisor = True
-                self.ultima_pose_supervisor = pose
-
-            self.odometria.establecer_pose(*pose)
         except Exception as exc:
             print(f"[ADVERTENCIA] No se pudo cargar navegacion global: {exc}")
             print("[ADVERTENCIA] Se usara navegacion reactiva como respaldo.")
             self.grid = None
+            self.celda_inicio = None
             self.ruta_celdas = []
             self.waypoints = []
             self.seguidor = None
@@ -245,7 +283,7 @@ class ControladorEpuckFinal:
                 f"{'Supervisor Webots' if self.usando_pose_supervisor else 'odometria encoders'}"
             )
             print(f" Resolucion grilla     : {self.grid.tamano_celda:.2f} m/celda")
-            print(f" Inicio grilla         : {self.grid.inicio}")
+            print(f" Inicio grilla         : {self.celda_inicio}")
             print(f" Meta grilla           : {self.grid.meta}")
             print(f" Celdas ruta A*        : {len(self.ruta_celdas)}")
             print(f" Waypoints             : {len(self.waypoints)}")
