@@ -1,6 +1,6 @@
 # Resumen de métricas de evaluación
 
-> Generado automáticamente el 2026-06-14 18:46
+> Generado automáticamente el 2026-06-17 09:42
 > Modo de decisión: kalman
 
 ## Tarea 27 — Tiempo total de ejecución
@@ -9,7 +9,7 @@ Tiempo transcurrido desde el inicio de la simulación hasta que el robot
 alcanza la meta (primera aparición de `META_ALCANZADA` en el registro).
 
 - **Escenario simple**: 113.92 s
-- **Escenario complejo**: 98.24 s
+- **Escenario complejo**: 466.56 s
 
 ## Tarea 28 — Longitud de la ruta planificada (A*)
 
@@ -17,14 +17,14 @@ Calculada como `(celdas_ruta - 1) × 0.20 m`, ya que el movimiento A*
 es 4-direccional y cada paso equivale a un tamaño de celda.
 
 - **Escenario simple**: 4.80 m
-- **Escenario complejo**: 4.40 m
+- **Escenario complejo**: 18.80 m
 
 ## Tarea 29 — Longitud real recorrida
 
 Suma acumulada del avance odométrico (`avance_ds_m`) durante la ejecución.
 
 - **Escenario simple**: 4.56 m
-- **Escenario complejo**: 4.28 m
+- **Escenario complejo**: 17.46 m
 
 ## Tarea 30 — Error final de posición
 
@@ -32,7 +32,7 @@ Distancia Euclidiana entre la posición odométrica final del robot y la
 coordenada exacta de la meta en el mundo Webots.
 
 - **Escenario simple**: 0.0773 m
-- **Escenario complejo**: 0.0780 m
+- **Escenario complejo**: 3.4931 m
 
 ## Tarea 31 — Bloqueos y recuperaciones
 
@@ -47,12 +47,12 @@ situación de cuasi-colisión evitada.
 
 | Métrica                         | Escenario simple | Escenario complejo |
 | ------------------------------- | :--------------: | :----------------: |
-| Celdas en ruta A*               |    25 celdas     |     23 celdas      |
-| Waypoints generados             |      8 wps       |       3 wps        |
-| Longitud planificada (A*)       |      4.80 m      |       4.40 m       |
-| Longitud real recorrida         |      4.56 m      |       4.28 m       |
-| Tiempo hasta meta               |     113.92 s     |      98.24 s       |
-| Error final de posición         |     0.0773 m     |      0.0780 m      |
+| Celdas en ruta A*               |    25 celdas     |     95 celdas      |
+| Waypoints generados             |      8 wps       |       33 wps       |
+| Longitud planificada (A*)       |      4.80 m      |      18.80 m       |
+| Longitud real recorrida         |      4.56 m      |      17.46 m       |
+| Tiempo hasta meta               |     113.92 s     |      466.56 s      |
+| Error final de posición         |     0.0773 m     |      3.4931 m      |
 | Bloqueos / recuperaciones       |        0         |         0          |
 | Robot llegó a la meta           |        Sí        |         Sí         |
 
