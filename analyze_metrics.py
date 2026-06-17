@@ -29,8 +29,8 @@ MAPAS = {
         "origen_webots": (-1.3, 1.3),
     },
     "maze_complex": {
-        "grid": "maps/maze_complex_grid.csv",
-        "origen_webots": (-1.9, 1.9),
+        "grid": "maps/maze_complex2_grid.csv",
+        "origen_webots": (-2.0, 2.0),
     },
 }
 

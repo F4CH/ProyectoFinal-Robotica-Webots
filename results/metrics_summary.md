@@ -1,6 +1,6 @@
 # Resumen de métricas de evaluación
 
-> Generado automáticamente el 2026-06-17 09:42
+> Generado automáticamente el 2026-06-17 10:21
 > Modo de decisión: kalman
 
 ## Tarea 27 — Tiempo total de ejecución
@@ -32,7 +32,7 @@ Distancia Euclidiana entre la posición odométrica final del robot y la
 coordenada exacta de la meta en el mundo Webots.
 
 - **Escenario simple**: 0.0773 m
-- **Escenario complejo**: 3.4931 m
+- **Escenario complejo**: 0.0799 m
 
 ## Tarea 31 — Bloqueos y recuperaciones
 
@@ -52,7 +52,7 @@ situación de cuasi-colisión evitada.
 | Longitud planificada (A*)       |      4.80 m      |      18.80 m       |
 | Longitud real recorrida         |      4.56 m      |      17.46 m       |
 | Tiempo hasta meta               |     113.92 s     |      466.56 s      |
-| Error final de posición         |     0.0773 m     |      3.4931 m      |
+| Error final de posición         |     0.0773 m     |      0.0799 m      |
 | Bloqueos / recuperaciones       |        0         |         0          |
 | Robot llegó a la meta           |        Sí        |         Sí         |
 
