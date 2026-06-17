@@ -78,6 +78,12 @@ MAPAS_ESCENARIOS = {
         "theta_inicial": math.pi / 2.0,
         "descripcion": "laberinto complejo alineado a grilla",
     },
+    "maze_complex2": {
+    "csv": "maze_complex2_grid.csv",
+    "origen_webots": (-2.0, 2.0),
+    "theta_inicial": math.pi / 2.0,
+    "descripcion": "laberinto complejo 21x21",
+    },
 }
 
 ESCENARIO_SIMPLE = "scenario1"

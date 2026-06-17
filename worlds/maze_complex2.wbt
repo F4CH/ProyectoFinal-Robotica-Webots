@@ -1,0 +1,2579 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "../protos/MyProto.proto"
+
+WorldInfo {
+  info [
+    "Maze complex: laberinto recto alineado a grilla de 0.2 m"
+    "Incluye pasillos, cruces y bloqueos parciales"
+  ]
+  title "Maze Complex"
+  basicTimeStep 64
+}
+Viewpoint {
+  orientation -0.5773501286886016 0.5773502971624277 0.5773503817178194 2.0943948440698748
+  position -0.10243405002146644 -0.021192737956455376 6.986152727028607
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 4.2 4.2
+  floorAppearance PBRAppearance {
+    baseColor 0.84 0.86 0.78
+    roughness 1
+    metalness 0
+  }
+  wallHeight 0.18
+}
+DEF COMPLEX_GOAL Solid {
+  translation -1.8 1.8 0.006
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.85 0.2
+        roughness 0.4
+        emissiveColor 0 0.25 0.05
+      }
+      geometry Box {
+        size 0.18 0.18 0.012
+      }
+    }
+  ]
+  name "maze_complex_goal"
+}
+MyProto {
+  translation -1.8 -1.8 -0.000113823
+  rotation 1.0953721821379847e-06 -1.114838564017845e-06 0.9999999999987785 1.570796077076656
+  controller "final_controller"
+}
+DEF PAREDES_LABERINTO Group {
+  children [
+    DEF ABAJO Solid {
+      translation 0 -2 0.1
+      rotation 0 0 1 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.3 0.7 1
+          }
+          geometry Box {
+            size 3.8 0.2 0.2
+          }
+        }
+      ]
+      name "solid(3)"
+      boundingObject Box {
+        size 3.8 0.2 0.2
+      }
+    }
+    DEF ARRIBA Solid {
+      translation 0 2 0.1
+      rotation 0 0 1 3.14159
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.3 0.7 1
+          }
+          geometry Box {
+            size 3.8 0.2 0.2
+          }
+        }
+      ]
+      name "solid(2)"
+      boundingObject Box {
+        size 3.8 0.2 0.2
+      }
+    }
+    DEF DER Solid {
+      translation 2 0 0.1
+      rotation 0 0 1 1.5707963267948968
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.3 0.7 1
+          }
+          geometry Box {
+            size 4.2 0.2 0.2
+          }
+        }
+      ]
+      name "solid(1)"
+      boundingObject Box {
+        size 4.2 0.2 0.2
+      }
+    }
+    DEF IZQ Solid {
+      translation -2 0 0.1
+      rotation 0 0 1 1.5707963267948968
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.3 0.7 1
+          }
+          geometry Box {
+            size 4.2 0.2 0.2
+          }
+        }
+      ]
+      boundingObject Box {
+        size 4.2 0.2 0.2
+      }
+    }
+  ]
+}
+DEF PAREDES_INTERNAS Group {
+  children [
+    Solid {
+      translation -2.63 -1.64 0.1
+      children [
+        Shape {
+          appearance DEF COLOR_INTERNO PBRAppearance {
+            baseColor 0 0.7 0.8
+          }
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Base"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.8 -0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C2(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.8 0 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C2(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.8 0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C2(3)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.6 -1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C3(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.6 -1.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C3(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.6 -1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C3(3)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.6 -0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C3(4)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.6 -0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C3(5)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.6 0 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C3(6)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.6 0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C3(7)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.6 0.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C3(8)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.6 0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C3(9)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.6 1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C3(10)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.6 1.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C3(11)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.6 1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C3(12)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.6 1.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C3(13)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.4 -1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C4(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.4 -0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C4(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.4 0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C4(3)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.4 1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C4(4)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.2 -1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C5(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.2 -1.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C5(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.2 -1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C5(3)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.2 -1 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C5(4)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.2 -0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C5(5)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.2 -0.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C5(6)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.2 -0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C5(7)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.2 -0.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C5(8)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.2 0 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C5(9)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.2 0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C5(10)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.2 0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C5(11)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.2 1 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C5(12)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.2 1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C5(13)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1.2 1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C5(14)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1 -1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C6(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1 -0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C6(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1 0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C6(3)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1 0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C6(4)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -1 1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C6(5)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.8 -1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C7(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.8 -1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C7(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.8 -1 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C7(3)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.8 -0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C7(4)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.8 -0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C7(5)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.8 0 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C7(6)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.8 0.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C7(7)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.8 0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C7(8)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.8 0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C7(9)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.8 1 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C7(10)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.8 1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C7(11)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.8 1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C7(12)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.8 1.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C7(13)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.6 -1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C8(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.6 -0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C8(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.6 0 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C8(3)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.6 0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C8(4)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.6 1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C8(5)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.4 -1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C9(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.4 -1.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C9(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.4 -1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C9(3)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.4 -0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C9(4)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.4 -0.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C9(5)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.4 -0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C9(6)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.4 0 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C9(7)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.4 0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C9(8)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.4 0.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C9(9)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.4 0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C9(10)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.4 1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C9(11)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.4 1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C9(12)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.2 -1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C10(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.2 -0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C10(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.2 0 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C10(3)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.2 0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C10(4)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.2 1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C10(5)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation -0.2 1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C10(6)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0 -1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C11(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0 -1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C11(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0 -1 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C11(3)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0 -0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C11(4)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0 -0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C11(5)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0 -0.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C11(6)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0 0 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C11(7)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0 0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C11(8)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0 0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C11(9)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0 1 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C11(10)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0 1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C11(11)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0 1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C11(12)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.2 -1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C12(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.2 -1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C12(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.2 -0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C12(3)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.2 -0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C12(4)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.2 0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C12(5)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.2 1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C12(6)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.2 1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C12(7)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.4 -1.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C13(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.4 -1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C13(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.4 -1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C13(3)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.4 -0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C13(4)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.4 -0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C13(5)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.4 0 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C13(6)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.4 0.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C13(7)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.4 0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C13(8)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.4 0.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C13(9)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.4 0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C13(10)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.4 1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C13(11)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.4 1.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C13(12)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.4 1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C13(13)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.6 -1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C14(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.6 0 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C14(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.6 0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C14(3)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.6 1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C14(4)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.8 -1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C15(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.8 -1.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C15(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.8 -1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C15(3)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.8 -1 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C15(4)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.8 -0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C15(5)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.8 -0.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C15(6)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.8 -0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C15(7)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.8 -0.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C15(8)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.8 0 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C15(9)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.8 0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C15(10)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.8 0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C15(11)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.8 1 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C15(12)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.8 1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C15(13)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 0.8 1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C15(14)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1 0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C16(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1 1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C16(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1 1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C16(3)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.2 -1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C17(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.2 -1.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C17(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.2 -1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C17(3)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.2 -1 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C17(4)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.2 -0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C17(5)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.2 -0.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C17(6)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.2 -0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C17(7)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.2 -0.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C17(8)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.2 0 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C17(9)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.2 0.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C17(10)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.2 0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C17(11)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.2 0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C17(12)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.2 1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C17(13)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.2 1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C17(14)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.4 -1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C18(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.4 0 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C18(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.4 0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C18(3)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.4 1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C18(4)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.6 -1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C19(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.6 -1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C19(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.6 -1 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C19(3)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.6 -0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C19(4)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.6 -0.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C19(5)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.6 -0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C19(6)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.6 0 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C19(7)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.6 0.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C19(8)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.6 0.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C19(9)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.6 0.8 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C19(10)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.6 1 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C19(11)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.6 1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C19(12)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.6 1.4 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C19(13)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.6 1.6 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C19(14)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.8 -1.2 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C20(1)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+    Solid {
+      translation 1.8 0 0.1
+      children [
+        Shape {
+          appearance USE COLOR_INTERNO
+          geometry Box {
+            size 0.2 0.2 0.2
+          }
+        }
+      ]
+      name "Pared_Interna_C20(2)"
+      boundingObject Box {
+        size 0.2 0.2 0.2
+      }
+    }
+  ]
+}
