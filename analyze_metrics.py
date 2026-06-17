@@ -28,7 +28,7 @@ MAPAS = {
         "grid": "maps/maze_simple_grid.csv",
         "origen_webots": (-1.3, 1.3),
     },
-    "maze_complex": {
+    "maze_complex2": {
         "grid": "maps/maze_complex2_grid.csv",
         "origen_webots": (-2.0, 2.0),
     },
@@ -209,7 +209,7 @@ def tabla_markdown(metricas_lista):
     # Indexar por escenario
     datos = {m["escenario"]: m for m in metricas_lista}
     simple = datos.get("maze_simple", {})
-    complejo = datos.get("maze_complex", {})
+    complejo = datos.get("maze_complex2", {})
 
     def fila(label, key, sufijo="", decimales=2):
         sv = _val(simple.get(key), sufijo, decimales)
@@ -318,7 +318,7 @@ situación de cuasi-colisión evitada.
 def guardar_resumen(metricas_lista, ruta_salida):
     datos = {m["escenario"]: m for m in metricas_lista}
     simple = datos.get("maze_simple", {})
-    complejo = datos.get("maze_complex", {})
+    complejo = datos.get("maze_complex2", {})
 
     contenido = PLANTILLA_MD.format(
         fecha=datetime.now().strftime("%Y-%m-%d %H:%M"),

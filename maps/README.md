@@ -7,6 +7,6 @@ Convencion usada en los CSV:
 - `2`: posicion inicial del robot
 - `3`: meta
 
-`maze_simple.wbt` y `maze_complex.wbt` son laberintos nuevos con paredes rectas
+`maze_simple.wbt` y `maze_complex2.wbt` son laberintos nuevos con paredes rectas
 alineadas a estas grillas. En ambos, el robot parte en la esquina inferior
 izquierda y la meta visible queda en la esquina superior derecha.

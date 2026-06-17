@@ -1,6 +1,6 @@
 # Resumen de métricas de evaluación
 
-> Generado automáticamente el 2026-06-17 10:21
+> Generado automáticamente el 2026-06-17 10:35
 > Modo de decisión: kalman
 
 ## Tarea 27 — Tiempo total de ejecución
