@@ -82,7 +82,7 @@ Se utiliza la API `Supervisor` de Webots para leer la posición y orientación r
 
 ### Escenario complejo — `maze_complex.wbt`
 
-![Escenario complejo](worlds/.maze_complex.jpg)
+![Escenario complejo](worlds/.maze_complex2.jpg)
 
 - **Grilla:** 20 × 20 celdas (0.2 m/celda → 4.0 m × 4.0 m)
 - **Inicio:** esquina inferior izquierda (celda 18, 1)
@@ -331,18 +331,18 @@ LAB2_MODO = "kalman"   # opciones: "crudo", "filtrado", "kalman"
 
 ## Resultados obtenidos y métricas de desempeño
 
-Las pruebas se realizaron posicionando el robot en la esquina inferior izquierda de cada laberinto, con la meta en la esquina superior derecha. El modo de filtrado utilizado fue **kalman**.
+Las pruebas se realizaron posicionando el robot en la esquina inferior izquierda de cada laberinto, con la meta en la esquina superior derecha. El modo de filtrado utilizado fue **kalman**. Los valores corresponden al resumen generado en `results/metrics_summary.md` el **2026-06-17 09:42**.
 
 ### Tabla comparativa
 
 | Métrica                         | Escenario simple | Escenario complejo |
 | ------------------------------- | :--------------: | :----------------: |
-| Celdas en ruta A\*              |    25 celdas     |     35 celdas      |
-| Waypoints generados             |      8 wps       |       7 wps        |
-| Longitud planificada (A\*)      |      4.80 m      |       6.80 m       |
-| Longitud real recorrida         |      4.56 m      |       6.76 m       |
-| Tiempo hasta meta               |     113.92 s     |      165.89 s      |
-| Error final de posición         |     0.0773 m     |      0.0787 m      |
+| Celdas en ruta A\*              |    25 celdas     |     95 celdas      |
+| Waypoints generados             |      8 wps       |       33 wps       |
+| Longitud planificada (A\*)      |      4.80 m      |      18.80 m       |
+| Longitud real recorrida         |      4.56 m      |      17.46 m       |
+| Tiempo hasta meta               |     113.92 s     |      466.56 s      |
+| Error final de posición         |     0.0773 m     |      3.4931 m      |
 | Bloqueos / recuperaciones       |        0         |         0          |
 | Robot llegó a la meta           |        ✓ Sí      |        ✓ Sí        |
 
@@ -351,13 +351,13 @@ Las pruebas se realizaron posicionando el robot en la esquina inferior izquierda
 
 ### Análisis de resultados
 
-**Longitud planificada vs. real:** La distancia real recorrida es ligeramente menor que la planificada por A\*. Esto se debe a que los waypoints se obtienen de una versión simplificada de la ruta (se eliminan puntos intermedios en tramos rectos), lo que permite al robot recortar levemente las trayectorias. La corrección de pose por el Supervisor también contribuye a esta diferencia.
+**Longitud planificada vs. real:** La distancia real recorrida es menor que la planificada por A\*. Esto se debe a que los waypoints se obtienen de una versión simplificada de la ruta (se eliminan puntos intermedios en tramos rectos), lo que permite al robot recortar trayectorias respecto del camino celda a celda. En el escenario complejo la diferencia es más marcada por la mayor cantidad de celdas y waypoints.
 
-**Error final:** El error de posición al llegar a la meta es inferior a **0.08 m** en ambos escenarios, equivalente a la tolerancia de llegada configurada en el seguidor de waypoints. Esto confirma que el robot alcanza la meta con precisión suficiente para el contexto de la tarea.
+**Error final:** En el escenario simple el error final es **0.0773 m**, dentro de la tolerancia de llegada de **0.08 m** configurada en el seguidor de waypoints. En el escenario complejo el resumen actualizado reporta **3.4931 m**, pese a que el registro indica `META_ALCANZADA`; esto evidencia una discrepancia entre la condición de llegada y la medición final de posición que debe considerarse al interpretar los resultados.
 
 **Bloqueos:** Ningún evento de recuperación fue necesario en ningún escenario. Esto indica que la ruta planificada por A\* es suficientemente segura y que la navegación reactiva resolvió por sí sola cualquier pequeña desviación sin necesidad de activar la recuperación por bloqueo.
 
-**Tiempo:** El escenario complejo requirió aproximadamente **52 segundos adicionales** respecto al simple, proporcional al incremento de longitud (+2.0 m) a velocidad lineal constante de 0.045 m/s.
+**Tiempo:** El escenario complejo requirió aproximadamente **352.64 segundos adicionales** respecto al simple. Este aumento es consistente con una ruta planificada mucho más extensa (+14.0 m), mayor cantidad de waypoints y más maniobras de giro durante el seguimiento.
 
 **Estabilidad del Kalman:** La ganancia `K` del filtro Kalman convergió rápidamente en ambas simulaciones, proporcionando una señal de proximidad frontal más estable que la medición cruda para la toma de decisiones reactivas.
 
@@ -376,7 +376,7 @@ Los videos de la simulación en ambos escenarios se encuentran en la carpeta [`v
 
 ## Conclusiones
 
-1. **El sistema de navegación autónoma funciona correctamente** en ambos escenarios: el robot planifica una ruta óptima con A\*, la ejecuta mediante seguimiento de waypoints y llega a la meta con un error inferior a 0.08 m en todos los casos.
+1. **El sistema de navegación autónoma completa ambos escenarios**: el robot planifica una ruta con A\*, la ejecuta mediante seguimiento de waypoints y el registro indica llegada a la meta tanto en el laberinto simple como en el complejo. Sin embargo, el escenario complejo reporta un error final de posición alto (**3.4931 m**), por lo que esa medición debe revisarse o justificarse en el análisis.
 
 2. **La integración A\* + navegación reactiva es efectiva.** La capa reactiva actúa como red de seguridad ante situaciones no contempladas en la grilla estática, mientras que A\* provee la dirección global. En las pruebas realizadas, la ruta planificada fue suficientemente limpia como para no requerir recuperaciones por bloqueo.
 
